@@ -17,3 +17,4 @@ package:
 functions:
   slack:
     handler: bin/main
+    name: ${self:service}
