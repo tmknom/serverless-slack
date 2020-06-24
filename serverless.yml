@@ -18,3 +18,5 @@ functions:
   slack:
     handler: bin/main
     name: ${self:service}
+    environment:
+      SLACK_WEB_HOOK: ${env:SLACK_WEB_HOOK}
