@@ -20,4 +20,4 @@ functions:
     name: ${self:service}
     memorySize: 128
     environment:
-      SLACK_INCOMING_WEBHOOK_URL: ${env:SLACK_INCOMING_WEBHOOK_URL}
+      INCOMING_WEBHOOK_URL: ${env:SLACK_INCOMING_WEBHOOK_URL}
