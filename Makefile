@@ -48,7 +48,7 @@ deploy: build ## Deploy a Serverless service
 generate-event: ## Generate event
 	@sls generate-event --type aws:cloudWatch
 
-invoke-local: ## Invoke function locally
+invoke-local: build ## Invoke function locally
 	@$(MAKE) generate-event | sls invoke local --function $(FUNCTION_NAME)
 
 invoke-remote: ## Invoke function remotely
