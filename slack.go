@@ -8,18 +8,12 @@ import (
 	"os"
 )
 
-var (
-	IncomingWebhookURL string = os.Getenv("SLACK_INCOMING_WEBHOOK_URL")
-)
+var IncomingWebhookURL = os.Getenv("SLACK_INCOMING_WEBHOOK_URL")
 
-type SlackMessage struct {
-	Text string `json:"text"`
-}
-
-func (sm *SlackMessage) post() error {
-	raw, err := json.Marshal(sm)
+func post(message interface{}) error {
+	raw, err := json.Marshal(message)
 	if err != nil {
-		return fmt.Errorf("marshal failed: %s, input: %s", err, sm)
+		return fmt.Errorf("marshal failed: %s, input: %#v", err, message)
 	}
 
 	req, err := http.NewRequest(http.MethodPost, IncomingWebhookURL, bytes.NewReader(raw))

@@ -9,8 +9,8 @@ import (
 
 func handler(event events.CloudWatchEvent) error {
 	fmt.Printf("event: %s", event)
-	sm := &SlackMessage{Text: "posted by lambda"}
-	return sm.post()
+	message := map[string]interface{}{"text": "posted by lambda"}
+	return post(message)
 }
 
 func main() {
