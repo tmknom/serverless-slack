@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
@@ -10,8 +9,8 @@ import (
 
 func handler(event events.CloudWatchEvent) error {
 	fmt.Printf("event: %s", event)
-	fmt.Printf("env.SLACK_WEB_HOOK: %s", os.Getenv("SLACK_WEB_HOOK"))
-	return nil
+	sm := &SlackMessage{Text: "posted by lambda"}
+	return sm.post()
 }
 
 func main() {
