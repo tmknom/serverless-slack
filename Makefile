@@ -40,7 +40,7 @@ deps: ## Install dependencies
 	go mod tidy
 
 build: clean deps ## Build the application
-	env GOOS=linux go build -ldflags="-s -w" -o $(HANDLER_PATH) main.go
+	env GOOS=linux go build -ldflags="-s -w" -o $(HANDLER_PATH)
 
 deploy: build ## Deploy a Serverless service
 	sls deploy --verbose
