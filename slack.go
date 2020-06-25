@@ -8,7 +8,7 @@ import (
 	"os"
 )
 
-var IncomingWebhookURL = os.Getenv("SLACK_INCOMING_WEBHOOK_URL")
+var incomingWebhookURL = os.Getenv("SLACK_INCOMING_WEBHOOK_URL")
 
 func post(message interface{}) error {
 	raw, err := json.Marshal(message)
@@ -16,7 +16,7 @@ func post(message interface{}) error {
 		return fmt.Errorf("marshal failed: %s, input: %#v", err, message)
 	}
 
-	req, err := http.NewRequest(http.MethodPost, IncomingWebhookURL, bytes.NewReader(raw))
+	req, err := http.NewRequest(http.MethodPost, incomingWebhookURL, bytes.NewReader(raw))
 	if err != nil {
 		return fmt.Errorf("failed new request: %s", err)
 	}
