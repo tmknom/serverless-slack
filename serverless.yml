@@ -19,4 +19,4 @@ functions:
     handler: bin/main
     name: ${self:service}
     environment:
-      SLACK_WEB_HOOK: ${env:SLACK_WEB_HOOK}
+      SLACK_INCOMING_WEBHOOK_URL: ${env:SLACK_INCOMING_WEBHOOK_URL}
