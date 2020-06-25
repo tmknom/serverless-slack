@@ -1,1 +1,1 @@
-export SLACK_WEB_HOOK=xxxxxxxx
+export SLACK_INCOMING_WEBHOOK_URL=xxxxxxxx
