@@ -1,16 +1,18 @@
 package main
 
 import (
-	"fmt"
+	"os"
 
-	"github.com/aws/aws-lambda-go/events"
 	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/slack-go/slack"
 )
 
-func handler(event events.CloudWatchEvent) error {
-	fmt.Printf("event: %s", event)
-	message := map[string]interface{}{"text": "posted by lambda"}
-	return post(message)
+var incomingWebhookURL = os.Getenv("INCOMING_WEBHOOK_URL")
+
+func handler() error {
+	message := "Hello, World!"
+	webhookMessage := &slack.WebhookMessage{Text: message}
+	return slack.PostWebhook(incomingWebhookURL, webhookMessage)
 }
 
 func main() {
